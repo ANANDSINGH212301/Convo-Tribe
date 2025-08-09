@@ -7,11 +7,27 @@ import { cn } from "@/lib/utils";
 
 const font = Open_Sans({
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"], // preload weights you use
 });
 
 export const metadata: Metadata = {
   title: "ConvoTribe",
-  description: "This is a a free messaging and communication platform primarily used for creating and joining communities, known as servers, centered around shared interests created by Anand Singh",
+  description:
+    "ConvoTribe is a free messaging and communication platform for creating and joining interest-based communities, built by Anand Singh.",
+  openGraph: {
+    title: "ConvoTribe",
+    description:
+      "Free messaging and communication platform for creating and joining interest-based communities.",
+    type: "website",
+    siteName: "ConvoTribe",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ConvoTribe",
+    description:
+      "Join ConvoTribe — your place to connect, chat, and share with like-minded people.",
+  },
 };
 
 export default function RootLayout({
@@ -22,12 +38,17 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
+        <body
+          className={cn(
+            font.className,
+            "bg-background text-foreground antialiased min-h-screen"
+          )}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
-            storageKey="convotribe-theme"
+            storageKey="discord-theme"
             disableTransitionOnChange
           >
             {children}
